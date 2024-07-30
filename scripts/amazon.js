@@ -1,3 +1,8 @@
+import {cart} from '../data/cart.js';
+//put all imports at the top of the file
+//we need to use live server
+//{cart as myCart}
+
 let productsHTML='';
 
 products.forEach((product)=>{
