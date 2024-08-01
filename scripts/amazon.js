@@ -1,4 +1,4 @@
-import {cart , addToCart} from '../data/cart.js';
+import {cart , addToCart , calculateCartQuantity} from '../data/cart.js';
 //put all imports at the top of the file
 //we need to use live server
 //{cart as myCart}
@@ -61,6 +61,7 @@ products.forEach((product)=>{
         </div>
   `;
 });
+updateCartQuantity();
 
 document.querySelector('.js-product-grid').innerHTML = productsHTML;
 
