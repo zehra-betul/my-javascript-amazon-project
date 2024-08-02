@@ -3,7 +3,7 @@ export let cart= JSON.parse(localStorage.getItem('cart'));
 if(!cart){
   cart = [{
     productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
-    quantity:2,
+    quantity:1,
     deliveryOptionId : '1'
   },
   {
@@ -78,5 +78,19 @@ export function updateQuantity(productId , newQuantity)
       cartItem.quantity = newQuantity;
     }
   });
+  saveToStorage();
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId) 
+{
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.deliveryOptionId = deliveryOptionId;
   saveToStorage();
 }
