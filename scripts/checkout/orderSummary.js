@@ -16,6 +16,25 @@ console.log(deliveryDate.format('dddd , MMMM , D'));*/
 
 export function renderOrderSummary() {
 
+  function updateCartQuantity() 
+  {
+    let cartQuantity=0;
+    cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+    });
+
+    /*document.querySelector('.js-return-to-home-link').innerHTML = cartQuantity + ' items';
+    
+    document.addEventListener('DOMContentLoaded', function() 
+    {
+      let element = document.querySelector('.js-return-to-home-link');
+      if (element) {
+          element.innerHTML = cartQuantity + ' items';
+      }
+    });*/
+    
+  }
+
   function saveNewQuantity(link)
   {
     const productId = link.dataset.productId;
@@ -30,16 +49,6 @@ export function renderOrderSummary() {
     document.querySelector(`.js-quantity-label-${productId}`).innerHTML= newQuantity;
 
     updateCartQuantity();
-  }
-
-  function updateCartQuantity() 
-  {
-    let cartQuantity=0;
-    cart.forEach((cartItem) => {
-      cartQuantity += cartItem.quantity;
-    });
-
-    document.querySelector('.js-return-to-home-link').innerHTML = cartQuantity + ' items';
   }
 
   let cartSummaryHTML='';
