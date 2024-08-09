@@ -1,3 +1,5 @@
+import {cart} from '../../data/cart.js';
+
 export function renderCheckoutHeader()
 {
   const checkoutHeaderHTML = `
@@ -11,7 +13,7 @@ export function renderCheckoutHeader()
 
     <div class="checkout-header-middle-section">
       Checkout (<a class="return-to-home-link js-return-to-home-link"
-        href="amazon.html"></a>)
+        href="amazon.html"> ${updateCartQuantity()} items</a>)
     </div>
 
     <div class="checkout-header-right-section">
@@ -20,6 +22,23 @@ export function renderCheckoutHeader()
   </div>
   `
 
-  document.querySelector('.js-checkout-header').innerHTML= checkoutHeaderHTML;
+  document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.js-return-to-home-link');
+    if (element) {
+        element.innerHTML = cartQuantity + ' items';
+    }
+});
+
 }
+
+function updateCartQuantity() 
+  {
+    let cartQuantity=0;
+    cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+    });
+
+    return cartQuantity;
+    
+  }
 
