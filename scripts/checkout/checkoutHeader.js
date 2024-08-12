@@ -22,23 +22,23 @@ export function renderCheckoutHeader()
   </div>
   `
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var element = document.querySelector('.js-return-to-home-link');
-    if (element) {
-        element.innerHTML = cartQuantity + ' items';
-    }
-});
+  const element = document.querySelector('.js-checkout-header');
+  if (element) {
+      element.innerHTML = checkoutHeaderHTML;
+  } else {
+      console.error('Element not found');
+  }
 
 }
 
 function updateCartQuantity() 
-  {
-    let cartQuantity=0;
-    cart.forEach((cartItem) => {
-      cartQuantity += cartItem.quantity;
-    });
+{
+  let cartQuantity=0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
 
-    return cartQuantity;
-    
-  }
+  return cartQuantity;
+  
+}
 
